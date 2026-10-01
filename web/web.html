@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме - Иван Петров</title>
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Подключение иконок Devicon для технологий -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+</head>
+<body>
+
+    <div class="resume-container">
+        
+        <!-- ВЕРХНЯЯ ЧАСТЬ: АВАТАР И КОНТАКТЫ -->
+        <header class="header-section">
+            <div class="profile-info">
+                <!-- Замените src на ссылку на вашу фотографию -->
+                <img src="/surgu-study/web/sourse/IMG.png" alt="Фото профиля" class="avatar">
+                <div class="profile-text">
+                    <h1>Иван Петров</h1>
+                    <p>Frontend developer</p>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h2>Контакты</h2>
+                <p>+79223344455</p>
+                <p>email@yandex.ru</p>
+            </div>
+        </header>
+
+        <!-- ОПИСАНИЕ -->
+        <section class="about-section">
+            <p><strong>Немного обо мне:</strong> это текст-"рыба", часто используемый в печати и веб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков...</p>
+        </section>
+
+        <!-- БЛОКИ С ХОББИ И СОЦСЕТЯМИ -->
+        <section class="info-grid">
+            <div class="info-box">
+                <h3>Хобби</h3>
+                <ul>
+                    <li>Чтение</li>
+                    <li>Путешествия</li>
+                    <li>Настольные игры</li>
+                    <li>Плавание</li>
+                </ul>
+            </div>
+            <div class="info-box">
+                <h3>Социальные сети</h3>
+                <ol class = "a">
+                    <li>
+                        <a href="https://web.telegram.org">Telegram</a>
+                    </li>
+                     <li>
+                        <a href="https://en.wikipedia.org/wiki/Instagram">Instagram</a>
+                     </li>
+                    <li>  
+                       <a href="https://ru.wikipedia.org/wiki/ВКонтакте">VK</a>   
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ТЕХНОЛОГИИ -->
+        <section class="tech-section">
+            <div class="bar-section">Интересующие технологии</div>
+            <div class="tech-icons">
+                <div class="tech-item">
+                    <i class="devicon-javascript-plain colored"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-python-plain colored"></i>
+                    <span>Python</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-vuejs-plain colored"></i>
+                    <span>VueJS</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <span>PostgreSQL</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-docker-plain colored"></i>
+                    <span>Docker</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
+        <section class="contact-form-section">
+            <div class="bar-section">Форма обратной связи</div>
+            <form action="#" method="POST" class="feedback-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Телефон" required>
+                </div>
+            </form>
+        <div class="form-group">
+            <textarea type = "textarea" placeholder="Ваш вопрос" rows="4" required></textarea>
+        </div>
+        <button class = button type="submit">Отправить</button>
+        </section>
+
+</div>
+
+</body>
+</html>
