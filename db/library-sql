@@ -1,0 +1,92 @@
+CREATE TABLE reader (
+    reader_id SERIAL PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL
+
+);
+drop TABLE reader
+
+CREATE TABLE Book (
+    isbn VARCHAR(20) PRIMARY KEY,
+    title VARCHAR(255),
+    year_of_publication INT
+
+);
+
+CREATE TABLE issuance (
+    issuance_id SERIAL PRIMARY KEY,
+    reader_id INT,
+    FOREIGN KEY (reader_id) REFERENCES reader(reader_id),
+    isbn_book VARCHAR(20),
+    FOREIGN KEY (isbn_book) REFERENCES book(isbn),
+    date_issue DATE,
+    planed_return_date DATE,
+    actual_return_date DATE
+
+);
+CREATE TABLE author (
+author_id INT PRIMARY KEY,
+fill_name VARCHAR(100)
+);
+
+CREATE TABLE authorship (
+    isbn_book VARCHAR(20),
+    Foreign Key (isbn_book) REFERENCES book(isbn),
+    author_id int,
+    Foreign Key (author_id) REFERENCES author(author_id),
+    PRIMARY KEY (isbn_book, author_id)
+);
+ DELETE FROM reader
+ 
+INSERT INTO Reader (full_name, phone_number) VALUES
+('Анна Петрова', '+7-900-111-22-33'),
+('Иван Соколов', '+7-900-222-33-44'),
+('Мария Ким', '+7-900-333-44-55'),
+('Олег Васильев', '+7-900-444-55-66'),
+('Тестовый Читатель', '+7-900-555-66-77');
+
+INSERT INTO Book (isbn, title, year_of_publication) VALUES
+('978-5-17-118366-8', 'Мастер и Маргарита', 1967),
+('978-5-389-06256-6', 'Преступление и наказание', 1866),
+('978-5-04-116716-3', 'Война и мир', 1869),
+('978-5-699-12014-7', 'Золотой теленок', 1931),
+('978-5-389-03713-7', 'Пикник на обочине', 1972);
+
+INSERT INTO Author (author_id, fill_name) VALUES
+('1', 'Михаил Булгаков'),
+('2', 'Федор Достоевский'),
+('3', 'Лев Толстой'),
+('4', 'Илья Ильф'),
+('5', 'Евгений Петров'),
+('6', 'Аркадий Стругацкий'),
+('7', 'Борис Стругацкий');
+
+INSERT INTO authorship (isbn_book, author_id) VALUES
+('978-5-17-118366-8', (SELECT author_id FROM Author WHERE fill_name = 'Михаил Булгаков')),
+('978-5-389-06256-6', (SELECT author_id FROM Author WHERE fill_name = 'Федор Достоевский')),
+('978-5-04-116716-3', (SELECT author_id FROM Author WHERE fill_name = 'Лев Толстой')),
+('978-5-699-12014-7', (SELECT author_id FROM Author WHERE fill_name = 'Илья Ильф')),
+('978-5-699-12014-7', (SELECT author_id FROM Author WHERE fill_name = 'Евгений Петров')),
+('978-5-389-03713-7', (SELECT author_id FROM Author WHERE fill_name = 'Аркадий Стругацкий')),
+('978-5-389-03713-7', (SELECT author_id FROM Author WHERE fill_name = 'Борис Стругацкий'));
+
+INSERT INTO issuance (reader_id, isbn_book, date_issue, planed_return_date, actual_return_date) VALUES
+((SELECT reader_id FROM Reader WHERE full_name = 'Анна Петрова'), '978-5-17-118366-8', '2026-09-01', '2026-09-15', '2026-09-10'),
+((SELECT reader_id FROM Reader WHERE full_name = 'Иван Соколов'), '978-5-389-06256-6', '2026-09-03', '2026-09-17', NULL),
+((SELECT reader_id FROM Reader WHERE full_name = 'Мария Ким'), '978-5-04-116716-3', '2026-09-05', '2026-09-19', '2026-09-18'),
+((SELECT reader_id FROM Reader WHERE full_name = 'Олег Васильев'), '978-5-699-12014-7', '2026-09-07', '2026-09-21', NULL),
+((SELECT reader_id FROM Reader WHERE full_name = 'Анна Петрова'), '978-5-389-03713-7', '2026-09-09', '2026-09-23', NULL),
+((SELECT reader_id FROM Reader WHERE full_name = 'Мария Ким'), '978-5-699-12014-7', '2026-08-20', '2026-09-03', '2026-09-01');
+
+UPDATE reader
+SET phone_number = '+7-999-123-45-67'
+WHERE reader_id = 9;
+
+UPDATE issuance
+SET actual_return_date = '2026-10-04'
+WHERE reader_id = 9 and actual_return_date is NULL;
+
+INSERT INTO Reader (full_name, phone_number) VALUES
+('Тестовый профиль', '+7-900-111-11-66');
+
+DELETE FROM reader WHERE reader_id = 13;
