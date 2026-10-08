@@ -90,3 +90,66 @@ INSERT INTO Reader (full_name, phone_number) VALUES
 ('Тестовый профиль', '+7-900-111-11-66');
 
 DELETE FROM reader WHERE reader_id = 13;
+
+
+-- PRACTICA 7 
+
+-- N1
+
+SELECT *
+FROM reader;
+
+-- N2
+
+SELECT year_of_publication, title
+FROM book;
+
+-- N3
+
+SELECT year_of_publication, title
+FROM book
+WHERE year_of_publication >= 1801 AND year_of_publication <= 1900;
+
+-- N4 изданные с 1917 по 1991 год включительно.
+
+SELECT title, year_of_publication
+FROM book
+WHERE year_of_publication BETWEEN 1917 AND 1991;
+
+-- N5
+
+SELECT phone_number, full_name
+FROM reader
+WHERE phone_number = '+7-900-444-55-66';
+
+-- N6
+
+SELECT *
+FROM reader
+WHERE full_name LIKE '%Петров%';
+
+-- N7
+
+SELECT issuance_id, reader_id, planed_return_date, actual_return_date
+FROM issuance
+WHERE actual_return_date IS null;
+
+-- N8
+
+SELECT title, year_of_publication
+FROM book
+ORDER BY title ASC;
+
+-- N9
+
+SELECT *
+FROM issuance
+WHERE actual_return_date IS NULL
+ORDER BY planed_return_date ASC;
+
+-- N9
+
+SELECT title, year_of_publication
+FROM book
+ORDER BY year_of_publication DESC
+LIMIT 3;
