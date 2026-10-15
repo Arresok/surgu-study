@@ -1,0 +1,12 @@
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+
+}
+.item {
+    background-color: lightblue;
+    border: 2px solid steelblue;
+    box-sizing: border-box;
+}
