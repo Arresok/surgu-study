@@ -196,3 +196,5 @@ JOIN Order_Items oi ON p.product_id = oi.product_id
 GROUP BY p.product_id, p.product_name
 ORDER BY total_sold_quantity DESC
 LIMIT 1
+
+
